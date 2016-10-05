@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {Http} from '@angular/http';
-import {Ng2Highcharts, Ng2Highmaps, Ng2Highstocks} from 'ng2-highcharts';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { Ng2Highstocks } from 'ng2-highcharts';
 
 
 @Component({
-  moduleId: module.id,
-  selector: 'sd-charts',
-  templateUrl: 'charts.component.html'
+	moduleId: module.id,
+	selector: 'sd-charts',
+	templateUrl: 'charts.component.html'
 })
 
-export class ChartsComponent implements OnInit {
+export class ChartsComponent implements OnInit, AfterViewInit {
+	@ViewChild(Ng2Highstocks) stock: Ng2Highstocks;
 	chartOptions = {
 		chart: {
 			type: 'line'
@@ -29,9 +30,9 @@ export class ChartsComponent implements OnInit {
 			name: 'Jane',
 			data: [1, 0, 4]
 		}, {
-				name: 'John',
-				data: [5, 7, 3]
-			}]
+			name: 'John',
+			data: [5, 7, 3]
+		}]
 	};
 	chartBar = {
 		chart: {
@@ -154,9 +155,9 @@ export class ChartsComponent implements OnInit {
 					name: 'Jane',
 					data: [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)]
 				}, {
-						name: 'John',
-						data: [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)]
-					}]
+					name: 'John',
+					data: [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)]
+				}]
 			};
 		}, 3000);
 
@@ -221,4 +222,9 @@ export class ChartsComponent implements OnInit {
 			}
 		);
 	}
+
+	ngAfterViewInit() : void {
+		setTimeout(() => { console.log(this.stock.chart); }, 1000);
+	}
+
 }
