@@ -136,29 +136,13 @@ export class ChartsComponent implements OnInit, AfterViewInit {
 
 	ngOnInit(): any {
 		setInterval(() => {
-			this.chartOptions = {
-				chart: {
-					type: 'line'
-				},
-				title: {
-					text: 'Fruit Consumption'
-				},
-				xAxis: {
-					categories: ['Apples', 'Bananas', 'Oranges']
-				},
-				yAxis: {
-					title: {
-						text: 'Fruit eaten'
-					}
-				},
-				series: [{
+			this.chartOptions.series = [{
 					name: 'Jane',
 					data: [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)]
 				}, {
 					name: 'John',
 					data: [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)]
-				}]
-			};
+				}];
 		}, 3000);
 
 		//Stock
